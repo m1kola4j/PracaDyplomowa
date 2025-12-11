@@ -1,0 +1,357 @@
+.admin-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: var(--space-md);
+  animation: fadeIn var(--transition-slow) ease-out;
+}
+
+.admin-container h1 {
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-lg);
+  font-size: 1.75rem;
+}
+
+.admin-tabs {
+  display: flex;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: var(--space-sm);
+}
+
+.admin-tabs button {
+  padding: var(--space-md) var(--space-lg);
+  border: none;
+  background: var(--color-bg-secondary);
+  cursor: pointer;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  transition: all var(--transition-fast);
+  border: 1px solid var(--color-border);
+  border-bottom: none;
+}
+
+.admin-tabs button:hover {
+  background: var(--color-bg-hover);
+  color: var(--color-text-primary);
+}
+
+.admin-tabs button.active {
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-dark));
+  color: white;
+  border-color: var(--color-accent);
+}
+
+.admin-error {
+  color: var(--color-error);
+  padding: var(--space-md);
+  background: rgba(248, 113, 113, 0.1);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-md);
+}
+.admin-dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-md);
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-xl);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.stat-card:hover {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-2px);
+}
+
+.stat-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin-top: var(--space-xs);
+}
+
+.admin-users table,
+.admin-tips table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: var(--space-md);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.admin-users th,
+.admin-tips th,
+.admin-users td,
+.admin-tips td {
+  padding: var(--space-md);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.admin-users th,
+.admin-tips th {
+  background: var(--color-bg-secondary);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-text-muted);
+}
+
+.admin-users td,
+.admin-tips td {
+  color: var(--color-text-secondary);
+}
+
+.admin-users tbody tr:hover td,
+.admin-tips tbody tr:hover td {
+  background: var(--color-bg-hover);
+}
+
+.admin-tips tr.inactive {
+  opacity: 0.5;
+}
+
+.admin-users select {
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  cursor: pointer;
+}
+
+.admin-users select:focus {
+  border-color: var(--color-accent);
+  outline: none;
+}
+
+.btn-add {
+  padding: var(--space-md) var(--space-lg);
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-dark));
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.btn-add:hover {
+  background: linear-gradient(135deg, var(--color-accent-light), var(--color-accent));
+  box-shadow: var(--shadow-glow);
+}
+
+.btn-edit,
+.btn-delete {
+  padding: var(--space-xs) var(--space-sm);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.85rem;
+  margin-right: var(--space-sm);
+  transition: all var(--transition-fast);
+}
+
+.btn-edit {
+  background: var(--color-bg-tertiary);
+  color: var(--color-accent);
+  border: 1px solid var(--color-border);
+}
+
+.btn-edit:hover {
+  background: var(--color-accent-glow);
+  border-color: var(--color-accent);
+}
+
+.btn-delete {
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+}
+
+.btn-delete:hover {
+  background: rgba(248, 113, 113, 0.1);
+  border-color: var(--color-error);
+  color: var(--color-error);
+}
+
+.btn-delete:disabled,
+.admin-users select:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-toggle {
+  padding: var(--space-xs) var(--space-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.8rem;
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-muted);
+  transition: all var(--transition-fast);
+}
+
+.btn-toggle:hover {
+  background: var(--color-bg-hover);
+}
+
+.btn-toggle.active {
+  background: var(--color-accent);
+  color: white;
+  border-color: var(--color-accent);
+}
+
+.modal {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  width: 100%;
+  max-width: 500px;
+  box-shadow: var(--shadow-lg);
+}
+
+.modal h3 {
+  margin: 0 0 var(--space-lg) 0;
+  color: var(--color-text-primary);
+}
+
+.form-group {
+  margin-bottom: var(--space-md);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+}
+
+.form-group input[type="text"],
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: var(--space-md);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  color: var(--color-text-primary);
+  box-sizing: border-box;
+  transition: all var(--transition-fast);
+}
+
+.form-group input[type="text"]:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--color-accent);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-accent-glow);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-group.checkbox label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  cursor: pointer;
+}
+
+.form-group.checkbox input {
+  width: auto;
+  accent-color: var(--color-accent);
+}
+
+.form-actions {
+  display: flex;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.btn-save {
+  flex: 1;
+  padding: var(--space-md);
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-dark));
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.btn-save:hover {
+  background: linear-gradient(135deg, var(--color-accent-light), var(--color-accent));
+  box-shadow: var(--shadow-glow);
+}
+
+.btn-cancel {
+  flex: 1;
+  padding: var(--space-md);
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.btn-cancel:hover {
+  background: var(--color-bg-hover);
+}
+
+@media (max-width: 600px) {
+  .admin-tabs {
+    flex-wrap: wrap;
+  }
+  
+  .admin-tabs button {
+    flex: 1;
+    min-width: 100px;
+    padding: var(--space-sm) var(--space-md);
+    font-size: 0.85rem;
+  }
+  
+  .admin-users table,
+  .admin-tips table {
+    font-size: 0.85rem;
+  }
+  
+  .admin-users th,
+  .admin-tips th,
+  .admin-users td,
+  .admin-tips td {
+    padding: var(--space-sm);
+  }
+  
+  .admin-users th:nth-child(3),
+  .admin-users td:nth-child(3) {
+    display: none;
+  }
+}

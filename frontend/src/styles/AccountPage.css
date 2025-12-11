@@ -1,0 +1,255 @@
+.account-container {
+  max-width: 600px;
+  margin: var(--space-xl) auto;
+  padding: var(--space-xl);
+  animation: fadeIn var(--transition-slow) ease-out;
+}
+
+.account-container h2 {
+  margin: 0 0 var(--space-sm) 0;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.account-container > p {
+  margin: 0 0 var(--space-lg) 0;
+  color: var(--color-text-secondary);
+}
+
+.account-container h3 {
+  margin: 0 0 var(--space-md) 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.account-container a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.account-container a:hover {
+  color: var(--color-accent-light);
+  text-decoration: underline;
+}
+
+.account-goals {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm) var(--space-lg);
+  margin: var(--space-md) 0;
+}
+
+.goal-row {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.goal-row:last-child {
+  border-bottom: none;
+}
+
+.goal-row span {
+  color: var(--color-text-secondary);
+}
+
+.goal-row strong {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.account-edit-link {
+  margin-top: var(--space-md);
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+}
+
+.account-settings {
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--color-border);
+}
+
+.account-settings h3 {
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-md);
+}
+
+.settings-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-lg);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.settings-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.settings-label {
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.settings-desc {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.btn-delete-account {
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all var(--transition-fast);
+}
+
+.btn-delete-account:hover {
+  background: rgba(248, 113, 113, 0.1);
+  color: var(--color-error);
+  border-color: var(--color-error);
+}
+
+.modal {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  width: 100%;
+  max-width: 400px;
+  box-shadow: var(--shadow-lg);
+}
+
+.modal h3 {
+  margin: 0 0 var(--space-md) 0;
+  color: var(--color-text-primary);
+}
+
+.modal p {
+  margin: 0 0 var(--space-md) 0;
+  color: var(--color-text-secondary);
+}
+
+.modal-warning {
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  border-radius: var(--radius-sm);
+  padding: var(--space-md);
+  font-size: 0.85rem;
+  color: var(--color-warning);
+}
+
+.modal .form-group {
+  margin: var(--space-lg) 0;
+}
+
+.modal .form-group label {
+  display: block;
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+  color: var(--color-text-primary);
+  font-size: 0.9rem;
+}
+
+.modal .form-group input {
+  width: 100%;
+  padding: var(--space-md);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  color: var(--color-text-primary);
+  box-sizing: border-box;
+}
+
+.modal .form-group input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-glow);
+}
+
+.modal-error {
+  color: var(--color-error);
+  font-size: 0.9rem;
+  margin: var(--space-sm) 0;
+}
+
+.modal-actions {
+  display: flex;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.btn-cancel {
+  flex: 1;
+  padding: var(--space-md);
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.btn-cancel:hover {
+  background: var(--color-bg-hover);
+}
+
+.btn-cancel:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-confirm-delete {
+  flex: 1;
+  padding: var(--space-md);
+  background: var(--color-error);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.btn-confirm-delete:hover {
+  background: #ef4444;
+  box-shadow: 0 0 15px rgba(248, 113, 113, 0.3);
+}
+
+.btn-confirm-delete:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 500px) {
+  .account-container {
+    padding: var(--space-lg);
+    margin: var(--space-md);
+  }
+  
+  .settings-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+  }
+  
+  .btn-delete-account {
+    width: 100%;
+  }
+}
