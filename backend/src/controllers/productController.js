@@ -32,7 +32,6 @@ function validateProductMacrosAndCalories({ kcal_100, protein_100, carbs_100, fa
   return null;
 }
 
-// Pobierz wszystkie produkty (z opcjonalnym wyszukiwaniem)
 async function getAllProducts(req, res, next) {
   try {
     const { search, limit = 50, offset = 0 } = req.query;

@@ -16,14 +16,8 @@ async function getActivityLevelData(activityLevelCode) {
   return result.rows[0];
 }
 
-// Oblicza cele dzienne na podstawie danych użytkownika
 async function calculateTargets({
-  gender,
-  age_years,
-  height_cm,
-  weight_kg,
-  activity_level,
-  goal_type,
+  gender, age_years, height_cm, weight_kg, activity_level, goal_type,
 }) {
   const age = Number(age_years);
   const height = Number(height_cm);
@@ -33,7 +27,6 @@ async function calculateTargets({
     throw new Error('Nieprawidłowe dane profilu (wiek / wzrost / waga)');
   }
 
-  // Oblicz BMR (Basal Metabolic Rate) - wzór Mifflin-St Jeor
   let bmr;
   if (gender === 'male') {
     bmr = 10 * weight + 6.25 * height - 5 * age + 5;
@@ -41,15 +34,12 @@ async function calculateTargets({
     bmr = 10 * weight + 6.25 * height - 5 * age - 161;
   }
 
-  // Pobierz współczynnik aktywności i cel kroków z bazy danych
   const activityData = await getActivityLevelData(activity_level);
   const factor = Number(activityData.tdee_factor) || 1.2;
   const dailyStepsTarget = activityData.steps_target || 7000;
 
-  // Oblicz TDEE (Total Daily Energy Expenditure)
   let tdee = bmr * factor;
 
-  // Modyfikuj TDEE w zależności od celu
   if (goal_type === 'lose') {
     tdee -= 400;
   } else if (goal_type === 'gain') {
@@ -58,7 +48,6 @@ async function calculateTargets({
 
   const dailyKcalTarget = Math.round(tdee / 10) * 10;
 
-  // Rozkład makroskładników w zależności od celu
   let proteinPct, fatPct, carbsPct;
 
   if (goal_type === 'lose') {
@@ -151,7 +140,6 @@ async function updateProfile(req, res, next) {
       return res.status(400).json({ message: 'Brak wymaganych danych profilu' });
     }
 
-    // Sprawdź czy podany activity_level istnieje w bazie
     const activityCheck = await db.query(
       'SELECT code FROM activity_levels WHERE code = $1',
       [activity_level]
@@ -228,7 +216,6 @@ async function updateProfile(req, res, next) {
   }
 }
 
-// Pobierz dostępne poziomy aktywności (dla frontendu)
 async function getActivityLevels(req, res, next) {
   try {
     const result = await db.query(
@@ -240,7 +227,6 @@ async function getActivityLevels(req, res, next) {
   }
 }
 
-// Usuń konto użytkownika
 async function deleteAccount(req, res, next) {
   try {
     const userId = req.user.id;
@@ -250,7 +236,6 @@ async function deleteAccount(req, res, next) {
       return res.status(400).json({ message: 'Hasło jest wymagane' });
     }
 
-    // Pobierz hasło użytkownika
     const userResult = await db.query(
       'SELECT password_hash FROM users WHERE id = $1',
       [userId]
@@ -260,20 +245,17 @@ async function deleteAccount(req, res, next) {
       return res.status(404).json({ message: 'Użytkownik nie znaleziony' });
     }
 
-    // Sprawdź hasło
     const isMatch = await bcrypt.compare(password, userResult.rows[0].password_hash);
     if (!isMatch) {
       return res.status(401).json({ message: 'Nieprawidłowe hasło' });
     }
 
-    // Usuń powiązane dane
     await db.query('DELETE FROM meal_items WHERE meal_id IN (SELECT id FROM meals WHERE user_id = $1)', [userId]);
     await db.query('DELETE FROM meals WHERE user_id = $1', [userId]);
     await db.query('DELETE FROM steps_log WHERE user_id = $1', [userId]);
     await db.query('DELETE FROM product_favorites WHERE user_id = $1', [userId]);
     await db.query('DELETE FROM products WHERE added_by_user_id = $1', [userId]);
 
-    // Usuń konto
     await db.query('DELETE FROM users WHERE id = $1', [userId]);
 
     res.json({ message: 'Konto zostało usunięte' });
@@ -287,4 +269,5 @@ module.exports = {
   updateProfile,
   deleteAccount,
   getActivityLevels,
+  calculateTargets,
 };
